@@ -86,6 +86,7 @@ const TeamSelected = ({
           selected={teamSelected}
           setSelected={setTeamSelected}
         />
+        {/* only show remove team button if there is a team selected */}
         {rosterSelected && (
           <FaTrashCan
             color="#FFFFFF"
