@@ -42,16 +42,16 @@ const PlayerTrade = ({ player }: Props) => {
         </p>
         <p>
           {player.assists} <span className="text-gray-400 text-xs">AST</span>
-        </p>{" "}
+        </p>
         <p>
           {player.trb} <span className="text-gray-400 text-xs">TRB</span>
-        </p>{" "}
+        </p>
         <p>
           {player.blocks} <span className="text-gray-400 text-xs">BLK</span>
-        </p>{" "}
+        </p>
         <p>
           {player.steals} <span className="text-gray-400 text-xs">STL</span>
-        </p>{" "}
+        </p>
         <p>
           {player.turnovers} <span className="text-gray-400 text-xs">TOV</span>
         </p>
