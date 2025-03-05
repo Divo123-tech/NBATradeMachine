@@ -129,6 +129,7 @@ const TeamSelected = ({
           />
         </div>
       )}
+      {/* generates cap summary */}
       {rosterSelected && (
         <div>
           <p className="text-gray-400 text-sm text-center">
