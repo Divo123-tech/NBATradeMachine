@@ -35,6 +35,7 @@ const PlayerTrade = ({ player }: Props) => {
           </div>
         </div>
       </div>
+      {/* player statistics */}
       <div className="flex justify-around text-sm text-white py-1 ">
         <p>
           {player.points} <span className="text-gray-400 text-xs">PTS</span>
