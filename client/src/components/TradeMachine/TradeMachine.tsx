@@ -70,6 +70,7 @@ const TradeMachine = () => {
         ) : (
           <Instructions />
         )}
+        {/* iterates through an array and maps Team Selected Components */}
         {[2, 3, 4].map((num: number) => {
           return (
             <>
