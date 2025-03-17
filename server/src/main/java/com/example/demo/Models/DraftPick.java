@@ -14,6 +14,17 @@ public class DraftPick {
         this.team = team;
     }
 
+    public static DraftPick fromCsv(String csvLine) {
+        String[] data = csvLine.split(",");
+        return new DraftPick(
+                Integer.parseInt(data[0]),
+                Integer.parseInt(data[1]),
+                data[3],
+                data[4],
+                data[5]
+        );
+    }
+
     public int getYear() {
         return year;
     }
