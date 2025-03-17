@@ -147,4 +147,104 @@ public class Player {
     public String getTeam() {
         return team;
     }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public int getGamesPlayed() {
+        return gamesPlayed;
+    }
+
+    public double getMinutesPlayed() {
+        return minutesPlayed;
+    }
+
+    public double getFieldGoal() {
+        return fieldGoal;
+    }
+
+    public double getThreePt() {
+        return threePt;
+    }
+
+    public double geteFG() {
+        return eFG;
+    }
+
+    public double getFreeThrow() {
+        return freeThrow;
+    }
+
+    public double getOrb() {
+        return orb;
+    }
+
+    public double getDrb() {
+        return drb;
+    }
+
+    public double getTrb() {
+        return trb;
+    }
+
+    public double getAssists() {
+        return assists;
+    }
+
+    public double getSteals() {
+        return steals;
+    }
+
+    public double getBlocks() {
+        return blocks;
+    }
+
+    public double getTurnovers() {
+        return turnovers;
+    }
+
+    public double getPersonalFouls() {
+        return personalFouls;
+    }
+
+    public double getPoints() {
+        return points;
+    }
+
+    public int getSeason2425() {
+        return season2425;
+    }
+
+    public int getSeason2526() {
+        return season2526;
+    }
+
+    public int getSeason2627() {
+        return season2627;
+    }
+
+    public int getSeason2728() {
+        return season2728;
+    }
+
+    public int getSeason2829() {
+        return season2829;
+    }
+
+    public int getSeason2930() {
+        return season2930;
+    }
+
+    public int getGuaranteed() {
+        return guaranteed;
+    }
+
+    public int getContractLength() {
+        return contractLength;
+    }
 }

@@ -39,10 +39,11 @@ public class PlayerService {
                 .collect(Collectors.toList());
     }
 
-    // Get players by name (searching by part of name)
-    public List<Player> getPlayersByName(String playerName) {
+    public Player getPlayerByName(String playerName) {
         return players.stream()
                 .filter(player -> player.getName().toLowerCase().contains(playerName.toLowerCase()))
-                .collect(Collectors.toList());
+                .findFirst()  // This will return an Optional<Player>
+                .orElse(null);  // If not found, return null
     }
+
 }

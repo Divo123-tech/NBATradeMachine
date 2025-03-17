@@ -16,15 +16,15 @@ public class PlayerController {
     public PlayerController(PlayerService playerService) {
         this.playerService = playerService;
     }
-    @GetMapping("/players")
-    public List<Player> getPlayers(@RequestParam(required =true) String playerName) {
+    @GetMapping("/player/{name}")
+    public Player getPlayers(@PathVariable String name) {
 
         // If player name is provided, search player by name
-        if (playerName != null && !playerName.isEmpty()) {
-            return playerService.getPlayersByName(playerName);
+        if (name != null && !name.isEmpty()) {
+            return playerService.getPlayerByName(name);
         }
 
-        return List.of();
+        return null;
     }
 
     @GetMapping("/players/{team}")
