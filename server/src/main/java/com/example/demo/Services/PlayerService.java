@@ -40,10 +40,6 @@ public class PlayerService {
     }
 
     public Player getPlayerByName(String playerName) {
-        return players.stream()
-                .filter(player -> player.getName().toLowerCase().contains(playerName.toLowerCase()))
-                .findFirst()  // This will return an Optional<Player>
-                .orElse(null);  // If not found, return null
+        return playerByName.getOrDefault(playerName.toLowerCase(), null);
     }
-
 }
