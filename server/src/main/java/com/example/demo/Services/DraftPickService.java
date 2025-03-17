@@ -26,7 +26,7 @@ public class DraftPickService {
                 draftPicks.add(pick);
             });
 
-            System.out.println("Loaded " + draftPicks.size() + " players from CSV.");
+            System.out.println("Loaded " + draftPicks.size() + " draft picks from CSV.");
         } catch (Exception e) {
             System.out.println(e.toString());
         }
