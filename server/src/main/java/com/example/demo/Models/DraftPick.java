@@ -17,11 +17,11 @@ public class DraftPick {
     public static DraftPick fromCsv(String csvLine) {
         String[] data = csvLine.split(",");
         return new DraftPick(
-                Integer.parseInt(data[0]),
-                Integer.parseInt(data[1]),
-                data[3],
-                data[4],
-                data[5]
+                Integer.parseInt(data[0]), //year
+                Integer.parseInt(data[1]), //round
+                data[3], //pick number
+                data[4], //from
+                data[5] //team
         );
     }
 
