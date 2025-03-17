@@ -1,33 +1,33 @@
 package com.example.demo.Models;
 
 public class Player {
-    private String name;
-    private int age;
-    private String position;
-    private int gamesPlayed;
-    private double minutesPlayed;
-    private double fieldGoal;
-    private double threePt;
-    private double eFG;
-    private double freeThrow;
-    private double orb;
-    private double drb;
-    private double trb;
-    private double assists;
-    private double steals;
-    private double blocks;
-    private double turnovers;
-    private double personalFouls;
-    private double points;
-    private String team;
-    private int season2425;
-    private int season2526;
-    private int season2627;
-    private int season2728;
-    private int season2829;
-    private int season2930;
-    private int guaranteed;
-    private int contractLength;
+    private final String name;
+    private final int age;
+    private final String position;
+    private final int gamesPlayed;
+    private final double minutesPlayed;
+    private final double fieldGoal;
+    private final double threePt;
+    private final double eFG;
+    private final double freeThrow;
+    private final double orb;
+    private final double drb;
+    private final double trb;
+    private final double assists;
+    private final double steals;
+    private final double blocks;
+    private final double turnovers;
+    private final double personalFouls;
+    private final double points;
+    private final String team;
+    private final int season2425;
+    private final int season2526;
+    private final int season2627;
+    private final int season2728;
+    private final int season2829;
+    private final int season2930;
+    private final int guaranteed;
+    private final int contractLength;
 
     public Player(String name, int age,
                   String position, int gamesPlayed,
@@ -105,5 +105,38 @@ public class Player {
                 Integer.parseInt(data[26]) //contract length
 
         );
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", position='" + position + '\'' +
+                ", gamesPlayed=" + gamesPlayed +
+                ", minutesPlayed=" + minutesPlayed +
+                ", fieldGoal=" + fieldGoal +
+                ", threePt=" + threePt +
+                ", eFG=" + eFG +
+                ", freeThrow=" + freeThrow +
+                ", orb=" + orb +
+                ", drb=" + drb +
+                ", trb=" + trb +
+                ", assists=" + assists +
+                ", steals=" + steals +
+                ", blocks=" + blocks +
+                ", turnovers=" + turnovers +
+                ", personalFouls=" + personalFouls +
+                ", points=" + points +
+                ", team='" + team + '\'' +
+                ", season2425=" + season2425 +
+                ", season2526=" + season2526 +
+                ", season2627=" + season2627 +
+                ", season2728=" + season2728 +
+                ", season2829=" + season2829 +
+                ", season2930=" + season2930 +
+                ", guaranteed=" + guaranteed +
+                ", contractLength=" + contractLength +
+                '}';
     }
 }
