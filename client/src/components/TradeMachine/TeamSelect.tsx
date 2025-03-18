@@ -1,15 +1,45 @@
 import { useState } from "react";
 import { Team } from "../../data/teams";
+import { getPlayersByTeam, Player } from "../../services/players.service";
+import {
+  DraftPick,
+  getDraftPickByTeam,
+} from "../../services/draftpick.service";
 
 type Props = {
   options: Team[];
   className: string;
+  setRostersSelected: React.Dispatch<React.SetStateAction<Player[][]>>;
+  setDraftPicks: React.Dispatch<React.SetStateAction<DraftPick[][]>>;
+  index: number;
 };
 
-const TeamSelect = ({ options, className }: Props) => {
+const TeamSelect = ({
+  options,
+  className,
+  setRostersSelected,
+  setDraftPicks,
+  index,
+}: Props) => {
   const [selected, setSelected] = useState<Team | null>(null);
   const [isOpen, setIsOpen] = useState(false);
-
+  const select = async (option: Team) => {
+    setSelected(option);
+    setIsOpen(false);
+    const roster = await getPlayersByTeam(option.abbreviation);
+    console.log(roster);
+    setRostersSelected((prevRosters) => {
+      const updatedRoster = [...prevRosters];
+      updatedRoster[index] = roster;
+      return updatedRoster;
+    });
+    const draftPicks = await getDraftPickByTeam(option.abbreviation);
+    setDraftPicks((prevPicks) => {
+      const updatedPicks = [...prevPicks];
+      updatedPicks[index] = draftPicks;
+      return updatedPicks;
+    });
+  };
   return (
     <div className={`relative  ${className}`}>
       {/* Selected Item */}
@@ -44,10 +74,7 @@ const TeamSelect = ({ options, className }: Props) => {
             <li
               key={option.id}
               className="flex items-center gap-2 px-4 py-2 hover:bg-gray-600 hover:bg-opacity-80 cursor-pointer text-white font-medium text-md"
-              onClick={() => {
-                setSelected(option);
-                setIsOpen(false);
-              }}
+              onClick={() => select(option)}
             >
               {option.id}.
               <img

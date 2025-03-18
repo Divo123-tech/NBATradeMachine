@@ -26,7 +26,7 @@ export const teams: Team[] = [
   },
   {
     name: "Charlotte Hornets",
-    abbreviation: "CHA",
+    abbreviation: "CHO",
     id: 4,
     logo: "https://cdn.nba.com/logos/nba/1610612766/primary/L/logo.svg",
   },
