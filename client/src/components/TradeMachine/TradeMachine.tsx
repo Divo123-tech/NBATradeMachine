@@ -1,6 +1,11 @@
 import { teams } from "../../data/teams";
+import { getPlayersByTeam } from "../../services/players.service";
 import TeamSelect from "./TeamSelect";
 const TradeMachine = () => {
+  const fetchTeam = async () => {
+    const response = await getPlayersByTeam("LAL");
+    console.log(response);
+  };
   return (
     <div>
       <div id="header" className="bg-navbar border-b border-blue-800">
@@ -16,6 +21,7 @@ const TradeMachine = () => {
           />
         </div>
       </div>
+      <button onClick={() => fetchTeam()}>click</button>
     </div>
   );
 };
