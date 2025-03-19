@@ -20,8 +20,8 @@ const PlayerTrade = ({ player }: Props) => {
             <p>{player.minutesPlayed} MPG</p>
           </div>
         </div>
-        <div className="flex items-center">
-          <div className="border-r-2 border-gray-500 text-center flex-col items-center h-full justify-center py-3 px-1">
+        <div className="flex items-center h-full">
+          <div className="border-r-4 border-orange-500 text-center flex-col items-center h-full justify-center py-3 px-1">
             <p className=" text-md font-semibold">
               ${(player.season2425 / 1000000).toFixed(1)}M
             </p>
