@@ -1,10 +1,6 @@
 import { useState } from "react";
 import { DraftPick } from "../../services/draftpick.service";
 import { Player } from "../../services/players.service";
-import TeamSelect from "./TeamSelect";
-import { teams } from "../../data/teams";
-import PlayerTrade from "../PlayerTrade";
-import DraftPickTrade from "../DraftPickTrade";
 import TeamSelected from "../TeamSelected";
 export type Roster = {
   [team: string]: Player[];
