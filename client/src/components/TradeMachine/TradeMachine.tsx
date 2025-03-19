@@ -5,6 +5,7 @@ import TeamSelect from "./TeamSelect";
 import { teams } from "../../data/teams";
 import PlayerTrade from "../PlayerTrade";
 import DraftPickTrade from "../DraftPickTrade";
+import TeamSelected from "../TeamSelected";
 export type Roster = {
   [team: string]: Player[];
 };
@@ -22,29 +23,16 @@ const TradeMachine = () => {
         </h1>
       </div>
       <div className="px-16 py-8 bg-black">
-        <div className="min-w-1/4 w-1/2 max-w-[45%] border-dashed border-2 border-gray-500 px-4 py-4 min-h-96 bg-navbar">
-          <TeamSelect
-            teams={teams}
-            className="w-full border border-gray-500 px-2 py-1 text-gray-400 font-semibold bg-navbar rounded-sm text-lg"
-            setRostersSelected={setRostersSelected}
-            setDraftPicks={setDraftPicksSelected}
-            index={0}
-          />
-          {rostersSelected.length > 0 && draftPicksSelected.length > 0 ? (
-            <div>
-              {rostersSelected[0].map((player: Player) => {
-                return <PlayerTrade player={player} />;
-              })}
-              {draftPicksSelected[0].map((draftPick: DraftPick, i: number) => {
-                return <DraftPickTrade i={i} draftPick={draftPick} />;
-              })}
-            </div>
-          ) : (
-            <div className="text-center py-8">
-              <p className="text-gray-400 text-2xl">Add a Team</p>
-            </div>
-          )}
-        </div>
+        <TeamSelected
+          setDraftPicksSelected={setDraftPicksSelected}
+          setRostersSelected={setRostersSelected}
+          rosterSelected={
+            rostersSelected.length > 0 ? rostersSelected[0] : null
+          }
+          draftPicksSelected={
+            draftPicksSelected.length > 0 ? draftPicksSelected[0] : null
+          }
+        />
       </div>
     </div>
   );
