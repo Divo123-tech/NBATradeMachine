@@ -32,7 +32,7 @@ const TradeMachine = () => {
             <div>
               {rostersSelected[0].map((player: Player) => {
                 return (
-                  <div>
+                  <div className="hover:bg-opacity-20 hover:cursor-pointer hover:bg-gray-500">
                     <div
                       key={player.name}
                       className="text-white flex justify-between border-b border-dashed border-gray-500 px-2"
@@ -42,7 +42,7 @@ const TradeMachine = () => {
                         <div className="flex text-sm text-gray-400 gap-1">
                           <p>{player.position + ", "} </p>
                           <p>{player.age + " yo, "} </p>
-                          <p>{player.minutesPlayed} MPG,</p>
+                          <p>{player.minutesPlayed} MPG</p>
                         </div>
                       </div>
                       <div className="flex">
