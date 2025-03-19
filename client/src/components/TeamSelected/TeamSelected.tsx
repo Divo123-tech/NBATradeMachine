@@ -65,11 +65,13 @@ const TeamSelected = ({
           })}
         </div>
       )}
+      {!rosterSelected && !draftPicksSelected && (
+        <div className="text-center py-8">
+          <p className="text-gray-400 text-2xl">Add a Team</p>
+        </div>
+      )}
     </div>
   );
 };
 
 export default TeamSelected;
-// <div className="text-center py-8">
-//   <p className="text-gray-400 text-2xl">Add a Team</p>
-// </div>
