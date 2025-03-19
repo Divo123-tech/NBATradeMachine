@@ -19,8 +19,9 @@ const TeamSelected = ({
   rosterSelected,
   draftPicksSelected,
 }: Props) => {
+  const [view, setView] = useState<string>("player");
   return (
-    <div className="min-w-1/4 w-1/2 max-w-[45%] border-dashed border-2 border-gray-500 px-4 py-4 min-h-96 bg-navbar">
+    <div className="min-w-1/4 w-1/2 max-w-[45%] border-dashed border-2 border-gray-500 px-4 py-4 min-h-96 bg-navbar flex flex-col gap-4">
       <TeamSelect
         teams={teams}
         className="w-full border border-gray-500 px-2 py-1 text-gray-400 font-semibold bg-navbar rounded-sm text-lg"
@@ -28,18 +29,40 @@ const TeamSelected = ({
         setDraftPicks={setDraftPicksSelected}
         index={0}
       />
-      {rosterSelected && draftPicksSelected ? (
+      <div className="flex gap-4 text-gray-400  pt-2 hover:cursor-pointer px-2 text-md border-t border-gray-500">
+        <p
+          className={
+            view == "player"
+              ? "underline text-orange-500 underline-offset-8"
+              : ""
+          }
+          onClick={() => setView("player")}
+        >
+          Roster ({rosterSelected?.length})
+        </p>
+        <p
+          className={
+            view == "picks"
+              ? "underline text-orange-500 underline-offset-8"
+              : ""
+          }
+          onClick={() => setView("picks")}
+        >
+          Picks ({draftPicksSelected?.length})
+        </p>
+      </div>
+      {rosterSelected && view == "player" && (
         <div>
           {rosterSelected.map((player: Player) => {
             return <PlayerTrade player={player} />;
           })}
+        </div>
+      )}
+      {draftPicksSelected && view == "picks" && (
+        <div>
           {draftPicksSelected.map((draftPick: DraftPick, i: number) => {
             return <DraftPickTrade i={i} draftPick={draftPick} />;
           })}
-        </div>
-      ) : (
-        <div className="text-center py-8">
-          <p className="text-gray-400 text-2xl">Add a Team</p>
         </div>
       )}
     </div>
@@ -47,3 +70,6 @@ const TeamSelected = ({
 };
 
 export default TeamSelected;
+// <div className="text-center py-8">
+//   <p className="text-gray-400 text-2xl">Add a Team</p>
+// </div>

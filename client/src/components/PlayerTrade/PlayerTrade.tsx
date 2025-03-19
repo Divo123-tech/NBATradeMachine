@@ -7,7 +7,7 @@ type Props = {
 
 const PlayerTrade = ({ player }: Props) => {
   return (
-    <div className="hover:bg-opacity-20 hover:cursor-pointer hover:bg-gray-500">
+    <div className="hover:bg-opacity-20 hover:cursor-pointer hover:bg-gray-500 border-t border-gray-500">
       <div
         key={player.name}
         className="text-white flex justify-between border-b border-dashed border-gray-500 px-2"
@@ -35,7 +35,7 @@ const PlayerTrade = ({ player }: Props) => {
           </div>
         </div>
       </div>
-      <div className="flex justify-around text-sm text-white py-1 border-b border-gray-500">
+      <div className="flex justify-around text-sm text-white py-1 ">
         <p>
           {player.points} <span className="text-gray-400 text-xs">PTS</span>
         </p>

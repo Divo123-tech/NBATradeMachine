@@ -11,7 +11,7 @@ const DraftPickTrade = ({ i, draftPick }: Props) => {
   return (
     <div
       key={i}
-      className="text-white flex items-center justify-between border-b border-gray-500 hover:bg-opacity-20 hover:cursor-pointer hover:bg-gray-500"
+      className="text-white flex items-center justify-between border-t border-gray-500 hover:bg-opacity-20 hover:cursor-pointer hover:bg-gray-500"
     >
       <div className="max-w-[80%] flex-grow">
         <p className="text-md">
@@ -30,7 +30,7 @@ const DraftPickTrade = ({ i, draftPick }: Props) => {
         <div className="border-r h-full px-1 py-2">
           <img src={teams[draftPick.team].logo} className="w-10 h-10" />
         </div>
-        <div className="pl-2 flex items-center justify-center">
+        <div className="px-2 flex items-center justify-center">
           <IoMdInformationCircleOutline size={24} />
         </div>
       </div>
