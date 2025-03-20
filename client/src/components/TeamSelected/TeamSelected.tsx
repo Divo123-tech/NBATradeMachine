@@ -42,6 +42,7 @@ const TeamSelected = ({
   const removeTeam = () => {
     setTeamSelected(null);
     setRostersSelected((prevRosters: Player[][]) => {
+      //filters the previous rosters to remove the current roster only
       return prevRosters.filter(
         (arr) => JSON.stringify(arr) !== JSON.stringify(rosterSelected)
       );
