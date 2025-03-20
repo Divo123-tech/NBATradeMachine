@@ -11,11 +11,10 @@ import java.util.stream.Collectors;
 
 @Service
 public class DraftPickService {
-    private List<DraftPick> draftPicks;
-
+    private Map<String, List<DraftPick>> draftPicksByTeam;
     @PostConstruct
     public void loadPlayers() {
-        draftPicks = new ArrayList<>();
+        draftPicksByTeam = new HashMap<>();
 
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("data/draft_picks_data.csv")),
@@ -23,17 +22,20 @@ public class DraftPickService {
 
             br.lines().skip(1).forEach(line -> {
                 DraftPick pick = DraftPick.fromCsv(line);
-                draftPicks.add(pick);
+                if (draftPicksByTeam.containsKey(pick.getTeam())){
+                    draftPicksByTeam.get(pick.getTeam()).add(pick);
+                }
+                //if not create a new list of one item
+                else{
+                    draftPicksByTeam.put(pick.getTeam(), new ArrayList<>(List.of(pick)));
+                }
             });
 
-            System.out.println("Loaded " + draftPicks.size() + " draft picks from CSV.");
         } catch (Exception e) {
             System.out.println(e.toString());
         }
     }
     public List<DraftPick> getDraftPicksByTeam(String team) {
-        return draftPicks.stream()
-                .filter(draftPick -> draftPick.getTeam().equalsIgnoreCase(team))
-                .collect(Collectors.toList());
+        return draftPicksByTeam.get(team);
     }
 }
