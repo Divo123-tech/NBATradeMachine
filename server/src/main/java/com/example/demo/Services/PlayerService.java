@@ -15,6 +15,7 @@ public class PlayerService {
     @PostConstruct
     public void loadPlayers() {
         playerByName = new HashMap<>();
+        //hashmap to make it O(1) operation for searching by team
         playersByTeam = new HashMap<>();
 
         try (BufferedReader br = new BufferedReader(
@@ -24,9 +25,11 @@ public class PlayerService {
             br.lines().skip(1).forEach(line -> {
                 Player player = Player.fromCsv(line);
                 playerByName.put(player.getName().toLowerCase(), player);
+                //check if team already exists
                 if (playersByTeam.containsKey(player.getTeam())){
                     playersByTeam.get(player.getTeam()).add(player);
                 }
+                //if not create a new list of one item
                 else{
                     playersByTeam.put(player.getTeam(), new ArrayList<>(List.of(player)));
                 }
