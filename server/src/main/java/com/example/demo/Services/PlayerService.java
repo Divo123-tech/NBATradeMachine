@@ -10,13 +10,12 @@ import java.util.stream.Collectors;
 
 @Service
 public class PlayerService {
-    private List<Player> players;
     private Map<String, Player> playerByName;
-
+    private Map<String,  List<Player>> playersByTeam;
     @PostConstruct
     public void loadPlayers() {
-        players = new ArrayList<>();
         playerByName = new HashMap<>();
+        playersByTeam = new HashMap<>();
 
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("data/players_data.csv")),
@@ -24,19 +23,21 @@ public class PlayerService {
 
             br.lines().skip(1).forEach(line -> {
                 Player player = Player.fromCsv(line);
-                players.add(player);
                 playerByName.put(player.getName().toLowerCase(), player);
+                if (playersByTeam.containsKey(player.getTeam())){
+                    playersByTeam.get(player.getTeam()).add(player);
+                }
+                else{
+                    playersByTeam.put(player.getTeam(), new ArrayList<>(List.of(player)));
+                }
             });
 
-            System.out.println("Loaded " + players.size() + " players from CSV.");
         } catch (Exception e) {
             System.out.println(e.toString());
         }
     }
     public List<Player> getPlayersByTeam(String team) {
-        return players.stream()
-                .filter(player -> player.getTeam().equalsIgnoreCase(team))
-                .collect(Collectors.toList());
+        return playersByTeam.get(team);
     }
 
     public Player getPlayerByName(String playerName) {
