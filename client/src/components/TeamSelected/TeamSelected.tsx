@@ -28,6 +28,7 @@ const TeamSelected = ({
   const [view, setView] = useState<string>("player");
   const [totalCap, setTotalCap] = useState<number>(0);
   useEffect(() => {
+    //sets total cap as the cumulative result of roster's salaries using .reduce
     setTotalCap(
       rosterSelected?.reduce(
         (total, player) => total + (player.season2425 || 0),
