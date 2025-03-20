@@ -140,21 +140,17 @@ const TeamSelected = ({
       {rosterSelected && draftPicksSelected && (
         <div className="flex gap-4 text-gray-400  pt-2 hover:cursor-pointer px-2 text-md border-t border-gray-500">
           <p
-            className={
-              view == "player"
-                ? "underline text-orange-500 underline-offset-8"
-                : ""
-            }
+            className={`${
+              view == "picks" && "underline text-orange-500 underline-offset-8"
+            }`}
             onClick={() => setView("player")}
           >
             Roster ({rosterSelected.length})
           </p>
           <p
-            className={
-              view == "picks"
-                ? "underline text-orange-500 underline-offset-8"
-                : ""
-            }
+            className={`${
+              view == "picks" && "underline text-orange-500 underline-offset-8"
+            }`}
             onClick={() => setView("picks")}
           >
             Picks ({draftPicksSelected.length})
