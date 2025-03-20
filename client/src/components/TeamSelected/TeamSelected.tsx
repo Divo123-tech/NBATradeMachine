@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TeamSelect from "../TradeMachine/TeamSelect";
 import { teams } from "../../data/teams";
 import { Player } from "../../services/players.service";
 import { DraftPick } from "../../services/draftpick.service";
 import PlayerTrade from "../PlayerTrade";
 import DraftPickTrade from "../DraftPickTrade";
+import { IoMdInformationCircleOutline } from "react-icons/io";
+import {
+  firstApronThreshold,
+  secondApronThreshold,
+  taxThreshold,
+} from "../../data/apron";
 
 type Props = {
   rosterSelected: Player[] | null;
@@ -20,6 +26,15 @@ const TeamSelected = ({
   draftPicksSelected,
 }: Props) => {
   const [view, setView] = useState<string>("player");
+  const [totalCap, setTotalCap] = useState<number>(0);
+  useEffect(() => {
+    setTotalCap(
+      rosterSelected?.reduce(
+        (total, player) => total + (player.season2425 || 0),
+        0
+      ) || 0
+    );
+  }, [rosterSelected]);
   return (
     <div className="min-w-1/4 w-1/2 max-w-[45%] border-dashed border-2 border-gray-500 px-4 py-4 min-h-96 bg-navbar flex flex-col gap-4">
       <TeamSelect
@@ -29,6 +44,74 @@ const TeamSelected = ({
         setDraftPicks={setDraftPicksSelected}
         index={0}
       />
+      {rosterSelected && (
+        <div className="flex justify-around border-t border-b border-gray-500 text-center">
+          <div className="border-r w-1/4 border-dashed py-3 border-gray-500 ">
+            <p className="text-white font-semibold">
+              ${(totalCap / 1000000).toFixed(1)}M
+            </p>
+            <div className="flex items-center justify-center gap-1 hover:cursor-pointer">
+              <IoMdInformationCircleOutline color="#FFFFFF" size={16} />
+              <p className="text-gray-500 text-xs">
+                <span className="font-bold">Total</span> Cap
+              </p>
+            </div>
+          </div>
+          <div className="border-r w-1/4 border-dashed py-3 border-gray-500 ">
+            <p
+              className={`${
+                taxThreshold - totalCap < 0 ? "text-red-400" : "text-green-500"
+              } font-semibold`}
+            >
+              {taxThreshold - totalCap < 0 && "-"}$
+              {Math.abs((taxThreshold - totalCap) / 1000000).toFixed(1)}M
+              <div className="flex items-center justify-center gap-1 hover:cursor-pointer">
+                <IoMdInformationCircleOutline color="#FFFFFF" size={16} />
+                <p className="text-gray-500 text-xs">
+                  <span className="font-bold">Tax</span> Space
+                </p>
+              </div>
+            </p>
+          </div>
+          <div className="border-r w-1/4 border-dashed py-3 border-gray-500 ">
+            <p
+              className={`${
+                firstApronThreshold - totalCap < 0
+                  ? "text-red-400"
+                  : "text-green-500"
+              } font-semibold`}
+            >
+              {firstApronThreshold - totalCap < 0 && "-"}$
+              {Math.abs((firstApronThreshold - totalCap) / 1000000).toFixed(1)}M
+            </p>
+            <div className="flex items-center justify-center gap-1 hover:cursor-pointer">
+              <IoMdInformationCircleOutline color="#FFFFFF" size={16} />
+              <p className="text-gray-500 text-xs">
+                <span className="font-bold">1st Apron</span> Space
+              </p>
+            </div>
+          </div>
+          <div className="border-r w-1/4 border-dashed py-3 border-gray-500 ">
+            <p
+              className={`${
+                secondApronThreshold - totalCap < 0
+                  ? "text-red-400"
+                  : "text-green-500"
+              } font-semibold`}
+            >
+              {secondApronThreshold - totalCap < 0 && "-"}$
+              {Math.abs((secondApronThreshold - totalCap) / 1000000).toFixed(1)}
+              M
+            </p>
+            <div className="flex items-center justify-center gap-1 hover:cursor-pointer">
+              <IoMdInformationCircleOutline color="#FFFFFF" size={16} />
+              <p className="text-gray-500 text-xs">
+                <span className="font-bold">2nd Apron</span> Space
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
       {rosterSelected && draftPicksSelected && (
         <div className="flex gap-4 text-gray-400  pt-2 hover:cursor-pointer px-2 text-md border-t border-gray-500">
           <p
