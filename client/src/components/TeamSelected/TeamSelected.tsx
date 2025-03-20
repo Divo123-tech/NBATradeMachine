@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import TeamSelect from "../TradeMachine/TeamSelect";
-import { teams } from "../../data/teams";
+import { Team, teams } from "../../data/teams";
 import { Player } from "../../services/players.service";
 import { DraftPick } from "../../services/draftpick.service";
 import PlayerTrade from "../PlayerTrade";
@@ -11,6 +11,7 @@ import {
   secondApronThreshold,
   taxThreshold,
 } from "../../data/apron";
+import { FaTrashCan } from "react-icons/fa6";
 
 type Props = {
   rosterSelected: Player[] | null;
@@ -27,6 +28,7 @@ const TeamSelected = ({
 }: Props) => {
   const [view, setView] = useState<string>("player");
   const [totalCap, setTotalCap] = useState<number>(0);
+  const [teamSelected, setTeamSelected] = useState<Team | null>(null);
   useEffect(() => {
     //sets total cap as the cumulative result of roster's salaries using .reduce
     setTotalCap(
@@ -36,15 +38,36 @@ const TeamSelected = ({
       ) || 0
     );
   }, [rosterSelected]);
+
+  const removeTeam = () => {
+    setTeamSelected(null);
+    setRostersSelected((prevRosters: Player[][]) => {
+      return prevRosters.filter(
+        (arr) => JSON.stringify(arr) !== JSON.stringify(rosterSelected)
+      );
+    });
+  };
   return (
     <div className="min-w-1/4 w-1/2 max-w-[45%] border-dashed border-2 border-gray-500 px-4 py-4 min-h-96 bg-navbar flex flex-col gap-4">
-      <TeamSelect
-        teams={teams}
-        className="w-full border border-gray-500 px-2 py-1 text-gray-400 font-semibold bg-navbar rounded-sm text-lg"
-        setRostersSelected={setRostersSelected}
-        setDraftPicks={setDraftPicksSelected}
-        index={0}
-      />
+      <div className="flex items-center gap-3">
+        <TeamSelect
+          teams={teams}
+          className="w-full border border-gray-500 px-2 py-1 text-gray-400 font-semibold bg-navbar rounded-sm text-lg"
+          setRostersSelected={setRostersSelected}
+          setDraftPicks={setDraftPicksSelected}
+          index={0}
+          selected={teamSelected}
+          setSelected={setTeamSelected}
+        />
+        {rosterSelected && (
+          <FaTrashCan
+            color="#FFFFFF"
+            size={16}
+            cursor={"pointer"}
+            onClick={removeTeam}
+          />
+        )}
+      </div>
       {rosterSelected && (
         <div className="flex justify-around border-t border-b border-gray-500 text-center">
           <div className="border-r w-1/4 border-dashed py-3 border-gray-500 ">

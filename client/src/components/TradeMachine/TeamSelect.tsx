@@ -5,13 +5,14 @@ import {
   DraftPick,
   getDraftPickByTeam,
 } from "../../services/draftpick.service";
-
 type Props = {
   teams: Teams;
   className: string;
   setRostersSelected: React.Dispatch<React.SetStateAction<Player[][]>>;
   setDraftPicks: React.Dispatch<React.SetStateAction<DraftPick[][]>>;
   index: number;
+  selected: Team | null;
+  setSelected: React.Dispatch<React.SetStateAction<Team | null>>;
 };
 
 const TeamSelect = ({
@@ -20,8 +21,9 @@ const TeamSelect = ({
   setRostersSelected,
   setDraftPicks,
   index,
+  selected,
+  setSelected,
 }: Props) => {
-  const [selected, setSelected] = useState<Team | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const select = async (abbreviation: string) => {
     setSelected(teams[abbreviation]);
