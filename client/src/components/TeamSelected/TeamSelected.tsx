@@ -12,6 +12,11 @@ import {
   taxThreshold,
 } from "../../data/apron";
 import { FaTrashCan } from "react-icons/fa6";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
 
 type Props = {
   rosterSelected: Player[] | null;
@@ -75,12 +80,25 @@ const TeamSelected = ({
             <p className="text-white font-semibold">
               ${(totalCap / 1000000).toFixed(1)}M
             </p>
-            <div className="flex items-center justify-center gap-1 hover:cursor-pointer">
-              <IoMdInformationCircleOutline color="#FFFFFF" size={16} />
-              <p className="text-gray-500 text-xs">
-                <span className="font-bold">Total</span> Cap
-              </p>
-            </div>
+            <HoverCard>
+              <HoverCardTrigger>
+                <div className="flex items-center justify-center gap-1 hover:cursor-pointer">
+                  <IoMdInformationCircleOutline color="#FFFFFF" size={16} />
+                  <p className="text-gray-500 text-xs">
+                    <span className="font-bold">Total</span> Cap
+                  </p>
+                </div>
+              </HoverCardTrigger>
+
+              <HoverCardContent>
+                <div>
+                  <div>
+                    <p>${(taxThreshold / 1000000).toFixed(1)}M</p>
+                    <p></p>
+                  </div>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
           </div>
           <div className="border-r w-1/4 border-dashed py-3 border-gray-500 ">
             <p
@@ -90,13 +108,42 @@ const TeamSelected = ({
             >
               {taxThreshold - totalCap < 0 && "-"}$
               {Math.abs((taxThreshold - totalCap) / 1000000).toFixed(1)}M
-              <div className="flex items-center justify-center gap-1 hover:cursor-pointer">
-                <IoMdInformationCircleOutline color="#FFFFFF" size={16} />
-                <p className="text-gray-500 text-xs">
-                  <span className="font-bold">Tax</span> Space
-                </p>
-              </div>
             </p>
+
+            <HoverCard>
+              <HoverCardTrigger>
+                <div className="flex items-center justify-center gap-1 hover:cursor-pointer">
+                  <IoMdInformationCircleOutline color="#FFFFFF" size={16} />
+                  <p className="text-gray-500 text-xs">
+                    <span className="font-bold">Tax</span> Space
+                  </p>
+                </div>
+              </HoverCardTrigger>
+
+              <HoverCardContent className="bg-black border-gray-500">
+                <div className="flex gap-2 text-white">
+                  <div className="flex flex-col">
+                    <br></br>
+                    <p>-</p>
+                    <p>=</p>
+                  </div>
+                  <div className="flex flex-col">
+                    <p>${(taxThreshold / 1000000).toFixed(1)}M</p>
+                    <p>${(totalCap / 1000000).toFixed(1)}M</p>
+                    <p>
+                      {taxThreshold - totalCap < 0 && "-"}$
+                      {Math.abs((taxThreshold - totalCap) / 1000000).toFixed(1)}
+                      M
+                    </p>
+                  </div>
+                  <div className="flex flex-col text-left font-normal">
+                    <p>Tax Threshold</p>
+                    <p>Total Cap</p>
+                    <p>Tax Space</p>
+                  </div>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
           </div>
           <div className="border-r w-1/4 border-dashed py-3 border-gray-500 ">
             <p
@@ -109,12 +156,42 @@ const TeamSelected = ({
               {firstApronThreshold - totalCap < 0 && "-"}$
               {Math.abs((firstApronThreshold - totalCap) / 1000000).toFixed(1)}M
             </p>
-            <div className="flex items-center justify-center gap-1 hover:cursor-pointer">
-              <IoMdInformationCircleOutline color="#FFFFFF" size={16} />
-              <p className="text-gray-500 text-xs">
-                <span className="font-bold">1st Apron</span> Space
-              </p>
-            </div>
+            <HoverCard>
+              <HoverCardTrigger>
+                <div className="flex items-center justify-center gap-1 hover:cursor-pointer">
+                  <IoMdInformationCircleOutline color="#FFFFFF" size={16} />
+                  <p className="text-gray-500 text-xs">
+                    <span className="font-bold">1st Apron</span> Space
+                  </p>
+                </div>
+              </HoverCardTrigger>
+
+              <HoverCardContent className="bg-black border-gray-500">
+                <div className="flex gap-2 text-white">
+                  <div className="flex flex-col">
+                    <br></br>
+                    <p>-</p>
+                    <p>=</p>
+                  </div>
+                  <div className="flex flex-col">
+                    <p>${(firstApronThreshold / 1000000).toFixed(1)}M</p>
+                    <p>${(totalCap / 1000000).toFixed(1)}M</p>
+                    <p>
+                      {firstApronThreshold - totalCap < 0 && "-"}$
+                      {Math.abs(
+                        (firstApronThreshold - totalCap) / 1000000
+                      ).toFixed(1)}
+                      M
+                    </p>
+                  </div>
+                  <div className="flex flex-col text-left font-normal">
+                    <p>1st Apron </p>
+                    <p>Total Cap</p>
+                    <p>Tax Space</p>
+                  </div>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
           </div>
           <div className="border-r w-1/4 border-dashed py-3 border-gray-500 ">
             <p
@@ -128,12 +205,42 @@ const TeamSelected = ({
               {Math.abs((secondApronThreshold - totalCap) / 1000000).toFixed(1)}
               M
             </p>
-            <div className="flex items-center justify-center gap-1 hover:cursor-pointer">
-              <IoMdInformationCircleOutline color="#FFFFFF" size={16} />
-              <p className="text-gray-500 text-xs">
-                <span className="font-bold">2nd Apron</span> Space
-              </p>
-            </div>
+            <HoverCard>
+              <HoverCardTrigger>
+                <div className="flex items-center justify-center gap-1 hover:cursor-pointer">
+                  <IoMdInformationCircleOutline color="#FFFFFF" size={16} />
+                  <p className="text-gray-500 text-xs">
+                    <span className="font-bold">2nd Apron</span> Space
+                  </p>
+                </div>
+              </HoverCardTrigger>
+
+              <HoverCardContent className="bg-black border-gray-500">
+                <div className="flex gap-2 text-white">
+                  <div className="flex flex-col">
+                    <br></br>
+                    <p>-</p>
+                    <p>=</p>
+                  </div>
+                  <div className="flex flex-col">
+                    <p>${(secondApronThreshold / 1000000).toFixed(1)}M</p>
+                    <p>${(totalCap / 1000000).toFixed(1)}M</p>
+                    <p>
+                      {secondApronThreshold - totalCap < 0 && "-"}$
+                      {Math.abs(
+                        (secondApronThreshold - totalCap) / 1000000
+                      ).toFixed(1)}
+                      M
+                    </p>
+                  </div>
+                  <div className="flex flex-col text-left font-normal">
+                    <p>2nd Apron </p>
+                    <p>Total Cap</p>
+                    <p>Tax Space</p>
+                  </div>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
           </div>
         </div>
       )}
