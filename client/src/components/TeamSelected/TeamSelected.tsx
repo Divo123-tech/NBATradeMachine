@@ -241,12 +241,14 @@ const TeamSelected = ({
           </div>
         </div>
       )}
-      <div>
-        <p className="text-gray-400 text-sm text-center">
-          <span className="font-bold">{generateCapSummary()}</span> team before
-          trade
-        </p>
-      </div>
+      {rosterSelected && (
+        <div>
+          <p className="text-gray-400 text-sm text-center">
+            <span className="font-bold">{generateCapSummary()}</span> team
+            before trade
+          </p>
+        </div>
+      )}
       {rosterSelected && draftPicksSelected && (
         <div className="flex gap-4 text-gray-400  pt-2 hover:cursor-pointer px-2 text-md border-t border-gray-500">
           <p
