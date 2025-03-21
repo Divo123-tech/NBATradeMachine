@@ -141,7 +141,7 @@ const TeamSelected = ({
         <div className="flex gap-4 text-gray-400  pt-2 hover:cursor-pointer px-2 text-md border-t border-gray-500">
           <p
             className={`${
-              view == "picks" && "underline text-orange-500 underline-offset-8"
+              view == "player" && "underline text-orange-500 underline-offset-8"
             }`}
             onClick={() => setView("player")}
           >
