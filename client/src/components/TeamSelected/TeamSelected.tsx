@@ -80,25 +80,12 @@ const TeamSelected = ({
             <p className="text-white font-semibold">
               ${(totalCap / 1000000).toFixed(1)}M
             </p>
-            <HoverCard>
-              <HoverCardTrigger>
-                <div className="flex items-center justify-center gap-1 hover:cursor-pointer">
-                  <IoMdInformationCircleOutline color="#FFFFFF" size={16} />
-                  <p className="text-gray-500 text-xs">
-                    <span className="font-bold">Total</span> Cap
-                  </p>
-                </div>
-              </HoverCardTrigger>
-
-              <HoverCardContent>
-                <div>
-                  <div>
-                    <p>${(taxThreshold / 1000000).toFixed(1)}M</p>
-                    <p></p>
-                  </div>
-                </div>
-              </HoverCardContent>
-            </HoverCard>
+            <div className="flex items-center justify-center gap-1 hover:cursor-pointer">
+              <IoMdInformationCircleOutline color="#FFFFFF" size={16} />
+              <p className="text-gray-500 text-xs">
+                <span className="font-bold">Total</span> Cap
+              </p>
+            </div>
           </div>
           <div className="border-r w-1/4 border-dashed py-3 border-gray-500 ">
             <p
