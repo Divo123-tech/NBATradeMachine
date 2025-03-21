@@ -54,7 +54,7 @@ const TeamSelected = ({
     });
   };
 
-  const generateCapSummary = () => {
+  const generateCapSummary = (): string => {
     if (totalCap < taxThreshold) {
       return "Over the cap/non-tax";
     } else if (totalCap < firstApronThreshold) {
