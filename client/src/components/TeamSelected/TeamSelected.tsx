@@ -270,7 +270,7 @@ const TeamSelected = ({
           </p>
         </div>
       )}
-
+      {/* generate players if the view is player */}
       {rosterSelected && view == "player" && (
         <div>
           {rosterSelected.map((player: Player) => {
@@ -278,6 +278,7 @@ const TeamSelected = ({
           })}
         </div>
       )}
+      {/* generate players if the view is picks */}
       {draftPicksSelected && view == "picks" && (
         <div>
           {draftPicksSelected.map((draftPick: DraftPick, i: number) => {
