@@ -274,7 +274,7 @@ const TeamSelected = ({
       {rosterSelected && view == "player" && (
         <div>
           {rosterSelected.map((player: Player) => {
-            return <PlayerTrade player={player} />;
+            return <PlayerTrade player={player} key={player.name} />;
           })}
         </div>
       )}
@@ -282,7 +282,13 @@ const TeamSelected = ({
       {draftPicksSelected && view == "picks" && (
         <div>
           {draftPicksSelected.map((draftPick: DraftPick, i: number) => {
-            return <DraftPickTrade i={i} draftPick={draftPick} />;
+            return (
+              <DraftPickTrade
+                i={i}
+                draftPick={draftPick}
+                key={`${draftPick.year} ${draftPick.from} ${draftPick.description} `}
+              />
+            );
           })}
         </div>
       )}
