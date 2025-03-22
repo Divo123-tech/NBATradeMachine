@@ -2,6 +2,7 @@ export type Team = {
   name: string;
   id: number;
   logo: string;
+  abbreviation: string;
 };
 
 export type Teams = {
@@ -10,151 +11,181 @@ export type Teams = {
 
 export const teams: Teams = {
   ATL: {
+    abbreviation: "ATL",
     name: "Atlanta Hawks",
     id: 1,
     logo: "https://cdn.nba.com/logos/nba/1610612737/primary/L/logo.svg",
   },
   BOS: {
+    abbreviation: "BOS",
     name: "Boston Celtics",
     id: 2,
     logo: "https://cdn.nba.com/logos/nba/1610612738/primary/L/logo.svg",
   },
   BKN: {
+    abbreviation: "BKN",
     name: "Brooklyn Nets",
     id: 3,
     logo: "https://cdn.nba.com/logos/nba/1610612751/primary/L/logo.svg",
   },
   CHO: {
+    abbreviation: "CHO",
     name: "Charlotte Hornets",
     id: 4,
     logo: "https://cdn.nba.com/logos/nba/1610612766/primary/L/logo.svg",
   },
   CHI: {
+    abbreviation: "CHI",
     name: "Chicago Bulls",
     id: 5,
     logo: "https://cdn.nba.com/logos/nba/1610612741/primary/L/logo.svg",
   },
   CLE: {
+    abbreviation: "CLE",
     name: "Cleveland Cavaliers",
     id: 6,
     logo: "https://cdn.nba.com/logos/nba/1610612739/primary/L/logo.svg",
   },
   DAL: {
+    abbreviation: "DAL",
     name: "Dallas Mavericks",
     id: 7,
     logo: "https://cdn.nba.com/logos/nba/1610612742/primary/L/logo.svg",
   },
   DEN: {
+    abbreviation: "DEN",
     name: "Denver Nuggets",
     id: 8,
     logo: "https://cdn.nba.com/logos/nba/1610612743/primary/L/logo.svg",
   },
   DET: {
+    abbreviation: "DET",
     name: "Detroit Pistons",
     id: 9,
     logo: "https://cdn.nba.com/logos/nba/1610612765/primary/L/logo.svg",
   },
   GSW: {
+    abbreviation: "GSW",
     name: "Golden State Warriors",
     id: 10,
     logo: "https://cdn.nba.com/logos/nba/1610612744/primary/L/logo.svg",
   },
   HOU: {
+    abbreviation: "HOU",
     name: "Houston Rockets",
     id: 11,
     logo: "https://cdn.nba.com/logos/nba/1610612745/primary/L/logo.svg",
   },
   IND: {
+    abbreviation: "IND",
     name: "Indiana Pacers",
     id: 12,
     logo: "https://cdn.nba.com/logos/nba/1610612754/primary/L/logo.svg",
   },
   LAC: {
+    abbreviation: "LAC",
     name: "Los Angeles Clippers",
     id: 13,
     logo: "https://cdn.nba.com/logos/nba/1610612746/primary/L/logo.svg",
   },
   LAL: {
+    abbreviation: "LAL",
     name: "Los Angeles Lakers",
     id: 14,
     logo: "https://cdn.nba.com/logos/nba/1610612747/primary/L/logo.svg",
   },
   MEM: {
+    abbreviation: "MEM",
     name: "Memphis Grizzlies",
     id: 15,
     logo: "https://cdn.nba.com/logos/nba/1610612763/primary/L/logo.svg",
   },
   MIA: {
+    abbreviation: "MIA",
     name: "Miami Heat",
     id: 16,
     logo: "https://cdn.nba.com/logos/nba/1610612748/primary/L/logo.svg",
   },
   MIL: {
+    abbreviation: "MIL",
     name: "Milwaukee Bucks",
     id: 17,
     logo: "https://cdn.nba.com/logos/nba/1610612749/primary/L/logo.svg",
   },
   MIN: {
+    abbreviation: "MIN",
     name: "Minnesota Timberwolves",
     id: 18,
     logo: "https://cdn.nba.com/logos/nba/1610612750/primary/L/logo.svg",
   },
   NOP: {
+    abbreviation: "NOP",
     name: "New Orleans Pelicans",
     id: 19,
     logo: "https://cdn.nba.com/logos/nba/1610612740/primary/L/logo.svg",
   },
   NYK: {
+    abbreviation: "NYK",
     name: "New York Knicks",
     id: 20,
     logo: "https://cdn.nba.com/logos/nba/1610612752/primary/L/logo.svg",
   },
   OKC: {
+    abbreviation: "OKC",
     name: "Oklahoma City Thunder",
     id: 21,
     logo: "https://cdn.nba.com/logos/nba/1610612760/primary/L/logo.svg",
   },
   ORL: {
+    abbreviation: "ORL",
     name: "Orlando Magic",
     id: 22,
     logo: "https://cdn.nba.com/logos/nba/1610612753/primary/L/logo.svg",
   },
   PHI: {
+    abbreviation: "PHI",
     name: "Philadelphia 76ers",
     id: 23,
     logo: "https://cdn.nba.com/logos/nba/1610612755/primary/L/logo.svg",
   },
   PHX: {
+    abbreviation: "PHX",
     name: "Phoenix Suns",
     id: 24,
     logo: "https://cdn.nba.com/logos/nba/1610612756/primary/L/logo.svg",
   },
   POR: {
+    abbreviation: "POR",
     name: "Portland Trail Blazers",
     id: 25,
     logo: "https://cdn.nba.com/logos/nba/1610612757/primary/L/logo.svg",
   },
   SAC: {
+    abbreviation: "SAC",
     name: "Sacramento Kings",
     id: 26,
     logo: "https://cdn.nba.com/logos/nba/1610612758/primary/L/logo.svg",
   },
   SAS: {
+    abbreviation: "SAS",
     name: "San Antonio Spurs",
     id: 27,
     logo: "https://cdn.nba.com/logos/nba/1610612759/primary/L/logo.svg",
   },
   TOR: {
+    abbreviation: "TOR",
     name: "Toronto Raptors",
     id: 28,
     logo: "https://cdn.nba.com/logos/nba/1610612761/primary/L/logo.svg",
   },
   UTA: {
+    abbreviation: "UTA",
     name: "Utah Jazz",
     id: 29,
     logo: "https://cdn.nba.com/logos/nba/1610612762/primary/L/logo.svg",
   },
   WAS: {
+    abbreviation: "WAS",
     name: "Washington Wizards",
     id: 30,
     logo: "https://cdn.nba.com/logos/nba/1610612764/primary/L/logo.svg",

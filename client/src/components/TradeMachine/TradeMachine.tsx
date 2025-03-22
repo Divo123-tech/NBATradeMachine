@@ -2,9 +2,11 @@ import { useState } from "react";
 import { DraftPick } from "../../services/draftpick.service";
 import { Player } from "../../services/players.service";
 import TeamSelected from "../TeamSelected";
-
+export type Roster = {
+  [team: string]: Player[];
+};
 const TradeMachine = () => {
-  const [rostersSelected, setRostersSelected] = useState<Player[][]>([]);
+  const [rostersSelected, setRostersSelected] = useState<Roster>({});
   const [draftPicksSelected, setDraftPicksSelected] = useState<DraftPick[][]>(
     []
   );
@@ -21,7 +23,9 @@ const TradeMachine = () => {
           setDraftPicksSelected={setDraftPicksSelected}
           setRostersSelected={setRostersSelected}
           rosterSelected={
-            rostersSelected.length > 0 ? rostersSelected[0] : null
+            Object.keys(rostersSelected).length > 0
+              ? rostersSelected[Object.keys(rostersSelected)[0]]
+              : null
           }
           draftPicksSelected={
             draftPicksSelected.length > 0 ? draftPicksSelected[0] : null

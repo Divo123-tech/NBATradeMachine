@@ -17,11 +17,12 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
+import { Roster } from "../TradeMachine/TradeMachine";
 
 type Props = {
   rosterSelected: Player[] | null;
   draftPicksSelected: DraftPick[] | null;
-  setRostersSelected: React.Dispatch<React.SetStateAction<Player[][]>>;
+  setRostersSelected: React.Dispatch<React.SetStateAction<Roster>>;
   setDraftPicksSelected: React.Dispatch<React.SetStateAction<DraftPick[][]>>;
 };
 
