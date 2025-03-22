@@ -62,9 +62,7 @@ const TeamSelect = ({
             </div>
           </>
         ) : (
-          <>
             <p>Add Team 1</p>
-          </>
         )}
         <span>▼</span>
       </div>
