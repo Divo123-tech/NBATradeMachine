@@ -10,7 +10,7 @@ const TradeMachine = () => {
   );
 
   return (
-    <div>
+    <>
       <div id="header" className="bg-navbar border-b border-blue-800">
         <h1 className="text-white font-semibold text-3xl py-6 px-16">
           NBA Trade Machine
@@ -28,7 +28,7 @@ const TradeMachine = () => {
           }
         />
       </div>
-    </div>
+    </>
   );
 };
 
