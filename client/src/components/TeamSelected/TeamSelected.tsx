@@ -46,13 +46,16 @@ const TeamSelected = ({
   }, [rosterSelected]);
 
   const removeTeam = () => {
-    setTeamSelected(null);
-    setRostersSelected((prevRosters: Player[][]) => {
-      //filters the previous rosters to remove the current roster only
-      return prevRosters.filter(
-        (arr) => JSON.stringify(arr) !== JSON.stringify(rosterSelected)
+    setRostersSelected((prevRosters: Roster) => {
+      const abbreviation = teamSelected?.abbreviation || "";
+      return Object.fromEntries(
+        Object.entries(prevRosters).filter(([key]) => {
+          console.log(key);
+          return key !== `${abbreviation}`;
+        })
       );
     });
+    setTeamSelected(null);
   };
 
   const generateCapSummary = (): string => {

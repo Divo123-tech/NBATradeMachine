@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { Team, Teams } from "../../data/teams";
-import { getPlayersByTeam, Player } from "../../services/players.service";
+import { getPlayersByTeam } from "../../services/players.service";
 import {
   DraftPick,
   getDraftPickByTeam,
 } from "../../services/draftpick.service";
+import { Roster } from "./TradeMachine";
 type Props = {
   teams: Teams;
   className: string;
-  setRostersSelected: React.Dispatch<React.SetStateAction<Player[][]>>;
+  setRostersSelected: React.Dispatch<React.SetStateAction<Roster>>;
   setDraftPicks: React.Dispatch<React.SetStateAction<DraftPick[][]>>;
   index: number;
   selected: Team | null;
@@ -26,15 +27,23 @@ const TeamSelect = ({
 }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const select = async (abbreviation: string) => {
-    setSelected(teams[abbreviation]);
     setIsOpen(false);
     const roster = await getPlayersByTeam(abbreviation);
-    console.log(roster);
-    setRostersSelected((prevRosters) => {
-      const updatedRoster = [...prevRosters];
-      updatedRoster[index] = roster;
-      return updatedRoster;
+    setRostersSelected((prevRosters: Roster) => {
+      if (abbreviation in prevRosters) {
+        return prevRosters;
+      }
+
+      return {
+        ...Object.fromEntries(
+          Object.entries(prevRosters).filter(([key]) => {
+            return key !== `${selected?.abbreviation}`;
+          })
+        ),
+        [`${abbreviation}`]: roster,
+      };
     });
+    setSelected(teams[abbreviation]);
     const draftPicks = await getDraftPickByTeam(abbreviation);
     setDraftPicks((prevPicks) => {
       const updatedPicks = [...prevPicks];
@@ -62,7 +71,7 @@ const TeamSelect = ({
             </div>
           </>
         ) : (
-            <p>Add Team 1</p>
+          <p>Add Team 1</p>
         )}
         <span>▼</span>
       </div>
