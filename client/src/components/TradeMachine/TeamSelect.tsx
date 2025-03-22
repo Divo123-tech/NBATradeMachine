@@ -30,16 +30,17 @@ const TeamSelect = ({
     setIsOpen(false);
     const roster = await getPlayersByTeam(abbreviation);
     setRostersSelected((prevRosters: Roster) => {
-      if (abbreviation in prevRosters) {
-        return prevRosters;
-      }
+      //if user selected the same team in the select, just return
+      if (abbreviation in prevRosters) return prevRosters;
 
       return {
+        //remove the current team
         ...Object.fromEntries(
           Object.entries(prevRosters).filter(([key]) => {
             return key !== `${selected?.abbreviation}`;
           })
         ),
+        //add the selected team
         [`${abbreviation}`]: roster,
       };
     });
