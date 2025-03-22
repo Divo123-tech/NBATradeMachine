@@ -62,7 +62,7 @@ const TeamSelected = ({
     //function to generate summary based on cap status of team
     if (totalCap < taxThreshold) {
       return "Over the cap/non-tax";
-    } else if (totalCap < firstApronThreshold) {
+    } else if (totalCap < secondApronThreshold) {
       return "1st apron";
     } else {
       return "2nd apron";
