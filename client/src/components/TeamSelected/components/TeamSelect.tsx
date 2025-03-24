@@ -7,7 +7,7 @@ type Props = {
   setTeamsInTrade: React.Dispatch<React.SetStateAction<string[]>>;
   teams: Teams;
   className: string;
-  setRostersSelected: React.Dispatch<React.SetStateAction<Player[][]>>;
+  setRostersSelected: React.Dispatch<React.SetStateAction<(Player[] | null)[]>>;
   setDraftPicks: React.Dispatch<React.SetStateAction<DraftPick[][]>>;
   index: number;
   selected: Team | null;

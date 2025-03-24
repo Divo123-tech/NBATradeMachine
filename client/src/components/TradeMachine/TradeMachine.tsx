@@ -7,7 +7,9 @@ export type Roster = {
   [team: string]: Player[];
 };
 const TradeMachine = () => {
-  const [rostersSelected, setRostersSelected] = useState<Player[][]>([]);
+  const [rostersSelected, setRostersSelected] = useState<(Player[] | null)[]>(
+    []
+  );
   const [draftPicksSelected, setDraftPicksSelected] = useState<DraftPick[][]>(
     []
   );
@@ -27,9 +29,7 @@ const TradeMachine = () => {
           setTeamsInTrade={setTeamsInTrade}
           setDraftPicksSelected={setDraftPicksSelected}
           setRostersSelected={setRostersSelected}
-          rosterSelected={
-            rostersSelected.length > 0 ? rostersSelected[0] : null
-          }
+          rosterSelected={rostersSelected[0]}
           draftPicksSelected={
             draftPicksSelected.length > 0 ? draftPicksSelected[0] : null
           }
@@ -41,9 +41,7 @@ const TradeMachine = () => {
             setTeamsInTrade={setTeamsInTrade}
             setDraftPicksSelected={setDraftPicksSelected}
             setRostersSelected={setRostersSelected}
-            rosterSelected={
-              rostersSelected.length > 1 ? rostersSelected[1] : null
-            }
+            rosterSelected={rostersSelected[1]}
             draftPicksSelected={
               draftPicksSelected.length > 1 ? draftPicksSelected[1] : null
             }

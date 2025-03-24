@@ -19,7 +19,7 @@ type Props = {
   setTeamsInTrade: React.Dispatch<React.SetStateAction<string[]>>;
   rosterSelected: Player[] | null;
   draftPicksSelected: DraftPick[] | null;
-  setRostersSelected: React.Dispatch<React.SetStateAction<Player[][]>>;
+  setRostersSelected: React.Dispatch<React.SetStateAction<(Player[] | null)[]>>;
   setDraftPicksSelected: React.Dispatch<React.SetStateAction<DraftPick[][]>>;
   index: number;
 };
@@ -48,9 +48,9 @@ const TeamSelected = ({
   }, [rosterSelected]);
 
   const removeTeam = () => {
-    setRostersSelected((prevRosters: Player[][]) => {
+    setRostersSelected((prevRosters: (Player[] | null)[]) => {
       //filters the new rosters to not include the current roster being removed
-      return prevRosters.filter(
+      return prevRosters?.filter(
         (arr) => JSON.stringify(arr) !== JSON.stringify(rosterSelected)
       );
     });
