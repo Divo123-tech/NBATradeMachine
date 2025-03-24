@@ -11,6 +11,7 @@ const TradeMachine = () => {
   const [draftPicksSelected, setDraftPicksSelected] = useState<DraftPick[][]>(
     []
   );
+  const [teamsInTrade, setTeamsInTrade] = useState<string[]>([]);
 
   return (
     <>
@@ -21,7 +22,8 @@ const TradeMachine = () => {
       </div>
       <div className="px-16 py-8 bg-black flex justify-around">
         <TeamSelected
-          rostersSelected={rostersSelected}
+          teamsInTrade={teamsInTrade}
+          setTeamsInTrade={setTeamsInTrade}
           setDraftPicksSelected={setDraftPicksSelected}
           setRostersSelected={setRostersSelected}
           rosterSelected={
@@ -34,7 +36,8 @@ const TradeMachine = () => {
         />
         {rostersSelected.length > 0 ? (
           <TeamSelected
-            rostersSelected={rostersSelected}
+            teamsInTrade={teamsInTrade}
+            setTeamsInTrade={setTeamsInTrade}
             setDraftPicksSelected={setDraftPicksSelected}
             setRostersSelected={setRostersSelected}
             rosterSelected={

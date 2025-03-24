@@ -6,7 +6,8 @@ import {
   getDraftPickByTeam,
 } from "../../services/draftpick.service";
 type Props = {
-  rostersSelected: Player[][];
+  teamsInTrade: string[];
+  setTeamsInTrade: React.Dispatch<React.SetStateAction<string[]>>;
   teams: Teams;
   className: string;
   setRostersSelected: React.Dispatch<React.SetStateAction<Player[][]>>;
@@ -17,7 +18,8 @@ type Props = {
 };
 
 const TeamSelect = ({
-  rostersSelected,
+  teamsInTrade,
+  setTeamsInTrade,
   teams,
   className,
   setRostersSelected,
@@ -37,6 +39,11 @@ const TeamSelect = ({
       updatedRoster[index] = roster;
       return updatedRoster;
     });
+    setTeamsInTrade((prevTeams) => {
+      const updatedTeams = [...prevTeams];
+      updatedTeams[index] = abbreviation;
+      return updatedTeams;
+    });
     const draftPicks = await getDraftPickByTeam(abbreviation);
     setDraftPicks((prevPicks) => {
       const updatedPicks = [...prevPicks];
@@ -46,12 +53,7 @@ const TeamSelect = ({
   };
 
   const teamExists = (abbreviation: string) => {
-    return rostersSelected.map((roster) => {
-      return roster.some((player) => {
-        console.log(player.team, abbreviation);
-        return player.team === abbreviation;
-      });
-    })[0];
+    return teamsInTrade.some((team: string) => team === abbreviation);
   };
   return (
     <div className={`relative  ${className}`}>
