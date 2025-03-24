@@ -45,7 +45,11 @@ const TeamSelected = ({
       ) || 0
     );
     setTeamSelected(rosterSelected ? teams[rosterSelected[0].team] : null);
-  }, [rosterSelected]);
+    setTeamsInTrade((prevTeams: string[]) => {
+      prevTeams[index] = teamSelected?.abbreviation || "";
+      return prevTeams;
+    });
+  }, [index, rosterSelected, setTeamsInTrade, teamSelected?.abbreviation]);
 
   const removeTeam = () => {
     setRostersSelected((prevRosters: (Player[] | null)[]) => {
@@ -53,11 +57,6 @@ const TeamSelected = ({
       return prevRosters?.filter(
         (arr) => JSON.stringify(arr) !== JSON.stringify(rosterSelected)
       );
-    });
-    //simply remove the team from the index prop given
-    setTeamsInTrade((prevTeams: string[]) => {
-      prevTeams.splice(index);
-      return prevTeams;
     });
   };
 
