@@ -23,7 +23,7 @@ const TradeMachine = () => {
           NBA Trade Machine
         </h1>
       </div>
-      <div className="px-16 py-8 bg-black flex justify-around">
+      <div className="px-16 py-8 bg-black flex flex-wrap justify-around w-full gap-4 border border-red-500">
         <TeamSelected
           teamsInTrade={teamsInTrade}
           setTeamsInTrade={setTeamsInTrade}

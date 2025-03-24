@@ -44,7 +44,9 @@ const TeamSelected = ({
         0
       ) || 0
     );
+    //change the team select when the roster changes
     setTeamSelected(rosterSelected ? teams[rosterSelected[0].team] : null);
+    //change what teams are in the trade
     setTeamsInTrade((prevTeams: string[]) => {
       prevTeams[index] = teamSelected?.abbreviation || "";
       return prevTeams;
@@ -71,7 +73,7 @@ const TeamSelected = ({
     }
   };
   return (
-    <div className="min-w-1/4 w-1/2 max-w-[45%] border-dashed border-2 border-gray-500 px-4 py-4 min-h-96 h-fit bg-navbar flex flex-col gap-4">
+    <div className="w-full md:w-[80%] lg:w-[45%] border-dashed border-2 border-gray-500 px-4 py-4 min-h-96 h-fit bg-navbar flex flex-col gap-4">
       <div className="flex items-center gap-3">
         <TeamSelect
           teamsInTrade={teamsInTrade}
