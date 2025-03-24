@@ -1,6 +1,6 @@
 import { IoMdInformationCircleOutline } from "react-icons/io";
-import { Player } from "../../services/players.service";
-import { teams } from "../../data/teams";
+import { Player } from "../../../services/players.service";
+import { teams } from "../../../data/teams";
 type Props = {
   player: Player;
 };

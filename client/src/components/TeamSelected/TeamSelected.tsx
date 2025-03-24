@@ -3,7 +3,7 @@ import TeamSelect from "./components/TeamSelect";
 import { Team, teams } from "../../data/teams";
 import { Player } from "../../services/players.service";
 import { DraftPick } from "../../services/draftpick.service";
-import PlayerTrade from "../PlayerTrade";
+import PlayerTrade from "./components/PlayerTrade";
 import DraftPickTrade from "../DraftPickTrade";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import {
