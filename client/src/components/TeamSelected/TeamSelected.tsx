@@ -44,15 +44,16 @@ const TeamSelected = ({
         0
       ) || 0
     );
+    setTeamSelected(rosterSelected ? teams[rosterSelected[0].team] : null);
   }, [rosterSelected]);
 
   const removeTeam = () => {
-    setTeamSelected(null);
     setRostersSelected((prevRosters: Player[][]) => {
       return prevRosters.filter(
         (arr) => JSON.stringify(arr) !== JSON.stringify(rosterSelected)
       );
     });
+    console.log("roster", rosterSelected);
   };
 
   const generateCapSummary = (): string => {
