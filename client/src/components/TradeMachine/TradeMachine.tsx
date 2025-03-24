@@ -11,6 +11,7 @@ const TradeMachine = () => {
   const [draftPicksSelected, setDraftPicksSelected] = useState<DraftPick[][]>(
     []
   );
+  //state to keep track of the teams in the trade to prevent duplicates
   const [teamsInTrade, setTeamsInTrade] = useState<string[]>([]);
 
   return (
