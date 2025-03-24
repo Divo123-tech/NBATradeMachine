@@ -85,6 +85,7 @@ const TeamSelect = ({
             <li
               key={abbreviation}
               className={`flex ${
+                // check if the team has already been selected
                 teamExists(abbreviation)
                   ? "opacity-50 hover:cursor-not-allowed"
                   : " hover:bg-gray-600 hover:bg-opacity-80 cursor-pointer"
