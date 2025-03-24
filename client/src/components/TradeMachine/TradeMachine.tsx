@@ -2,6 +2,7 @@ import { useState } from "react";
 import { DraftPick } from "../../services/draftpick.service";
 import { Player } from "../../services/players.service";
 import TeamSelected from "../TeamSelected";
+import Instructions from "../Instructions";
 export type Roster = {
   [team: string]: Player[];
 };
@@ -30,7 +31,7 @@ const TradeMachine = () => {
           }
           index={0}
         />
-        {rostersSelected.length > 1 ? (
+        {rostersSelected.length > 0 ? (
           <TeamSelected
             setDraftPicksSelected={setDraftPicksSelected}
             setRostersSelected={setRostersSelected}
@@ -43,17 +44,7 @@ const TradeMachine = () => {
             index={1}
           />
         ) : (
-          <div className="min-w-1/4 w-1/2 max-w-[45%] border border-gray-700 px-4 py-4 min-h-96 bg-navbar flex flex-col gap-8 text-white text-lg">
-            <p>Select 2-5 Teams</p>
-            <p>Trade Players and Draft Picks</p>
-            <p>Try your trade!</p>
-            <p>
-              Get an AI analysis of your trade from the perspectives of your
-              teams' GMs
-            </p>
-            <p>Post and share your trade as a post</p>
-            <p>View, vote and comment on trades!</p>
-          </div>
+          <Instructions />
         )}
       </div>
     </>
