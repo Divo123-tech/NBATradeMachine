@@ -17,13 +17,13 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
-import { Roster } from "../TradeMachine/TradeMachine";
 
 type Props = {
   rosterSelected: Player[] | null;
   draftPicksSelected: DraftPick[] | null;
-  setRostersSelected: React.Dispatch<React.SetStateAction<Roster>>;
+  setRostersSelected: React.Dispatch<React.SetStateAction<Player[][]>>;
   setDraftPicksSelected: React.Dispatch<React.SetStateAction<DraftPick[][]>>;
+  index: number;
 };
 
 const TeamSelected = ({
@@ -31,6 +31,7 @@ const TeamSelected = ({
   setDraftPicksSelected,
   rosterSelected,
   draftPicksSelected,
+  index,
 }: Props) => {
   const [view, setView] = useState<string>("player");
   const [totalCap, setTotalCap] = useState<number>(0);
@@ -46,16 +47,12 @@ const TeamSelected = ({
   }, [rosterSelected]);
 
   const removeTeam = () => {
-    setRostersSelected((prevRosters: Roster) => {
-      const abbreviation = teamSelected?.abbreviation || "";
-      return Object.fromEntries(
-        Object.entries(prevRosters).filter(([key]) => {
-          console.log(key);
-          return key !== `${abbreviation}`;
-        })
+    setTeamSelected(null);
+    setRostersSelected((prevRosters: Player[][]) => {
+      return prevRosters.filter(
+        (arr) => JSON.stringify(arr) !== JSON.stringify(rosterSelected)
       );
     });
-    setTeamSelected(null);
   };
 
   const generateCapSummary = (): string => {
@@ -76,7 +73,7 @@ const TeamSelected = ({
           className="w-full border border-gray-500 px-2 py-1 text-gray-400 font-semibold bg-navbar rounded-sm text-lg"
           setRostersSelected={setRostersSelected}
           setDraftPicks={setDraftPicksSelected}
-          index={0}
+          index={index}
           selected={teamSelected}
           setSelected={setTeamSelected}
         />
@@ -296,7 +293,7 @@ const TeamSelected = ({
           })}
         </div>
       )}
-      {!rosterSelected && !draftPicksSelected && (
+      {!teamSelected && (
         <div className="text-center py-8">
           <p className="text-gray-400 text-2xl">Add a Team</p>
         </div>

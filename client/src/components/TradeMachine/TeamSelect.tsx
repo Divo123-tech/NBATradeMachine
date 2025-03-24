@@ -1,15 +1,14 @@
 import { useState } from "react";
 import { Team, Teams } from "../../data/teams";
-import { getPlayersByTeam } from "../../services/players.service";
+import { getPlayersByTeam, Player } from "../../services/players.service";
 import {
   DraftPick,
   getDraftPickByTeam,
 } from "../../services/draftpick.service";
-import { Roster } from "./TradeMachine";
 type Props = {
   teams: Teams;
   className: string;
-  setRostersSelected: React.Dispatch<React.SetStateAction<Roster>>;
+  setRostersSelected: React.Dispatch<React.SetStateAction<Player[][]>>;
   setDraftPicks: React.Dispatch<React.SetStateAction<DraftPick[][]>>;
   index: number;
   selected: Team | null;
@@ -27,24 +26,15 @@ const TeamSelect = ({
 }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const select = async (abbreviation: string) => {
+    setSelected(teams[abbreviation]);
     setIsOpen(false);
     const roster = await getPlayersByTeam(abbreviation);
-    setRostersSelected((prevRosters: Roster) => {
-      //if user selected the same team in the select, just return
-      if (abbreviation in prevRosters) return prevRosters;
-
-      return {
-        //remove the current team
-        ...Object.fromEntries(
-          Object.entries(prevRosters).filter(([key]) => {
-            return key !== `${selected?.abbreviation}`;
-          })
-        ),
-        //add the selected team
-        [`${abbreviation}`]: roster,
-      };
+    console.log(roster);
+    setRostersSelected((prevRosters) => {
+      const updatedRoster = [...prevRosters];
+      updatedRoster[index] = roster;
+      return updatedRoster;
     });
-    setSelected(teams[abbreviation]);
     const draftPicks = await getDraftPickByTeam(abbreviation);
     setDraftPicks((prevPicks) => {
       const updatedPicks = [...prevPicks];
