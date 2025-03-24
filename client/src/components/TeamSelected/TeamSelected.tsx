@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import TeamSelect from "./TeamSelect";
+import TeamSelect from "./components/TeamSelect";
 import { Team, teams } from "../../data/teams";
 import { Player } from "../../services/players.service";
 import { DraftPick } from "../../services/draftpick.service";
@@ -12,7 +12,7 @@ import {
   taxThreshold,
 } from "../../data/apron";
 import { FaTrashCan } from "react-icons/fa6";
-import FinancialInformation from "./FinancialInformation";
+import FinancialInformation from "./components/FinancialInformation";
 
 type Props = {
   teamsInTrade: string[];

@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Team, Teams } from "../../data/teams";
-import { getPlayersByTeam, Player } from "../../services/players.service";
+import { Team, Teams } from "../../../data/teams";
+import { getPlayersByTeam, Player } from "../../../services/players.service";
 import {
   DraftPick,
   getDraftPickByTeam,
-} from "../../services/draftpick.service";
+} from "../../../services/draftpick.service";
 type Props = {
   teamsInTrade: string[];
   setTeamsInTrade: React.Dispatch<React.SetStateAction<string[]>>;
