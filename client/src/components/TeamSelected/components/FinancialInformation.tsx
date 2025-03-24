@@ -2,7 +2,7 @@ import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "../../ui/hover-card";
+} from "@/components/ui/hover-card";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 
 type Props = {
