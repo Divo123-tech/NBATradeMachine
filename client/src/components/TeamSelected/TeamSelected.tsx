@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import TeamSelect from "../TradeMachine/TeamSelect";
+import TeamSelect from "./TeamSelect";
 import { Team, teams } from "../../data/teams";
 import { Player } from "../../services/players.service";
 import { DraftPick } from "../../services/draftpick.service";
