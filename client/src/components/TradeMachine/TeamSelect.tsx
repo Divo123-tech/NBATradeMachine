@@ -6,6 +6,7 @@ import {
   getDraftPickByTeam,
 } from "../../services/draftpick.service";
 type Props = {
+  rostersSelected: Player[][];
   teams: Teams;
   className: string;
   setRostersSelected: React.Dispatch<React.SetStateAction<Player[][]>>;
@@ -16,6 +17,7 @@ type Props = {
 };
 
 const TeamSelect = ({
+  rostersSelected,
   teams,
   className,
   setRostersSelected,
@@ -41,6 +43,15 @@ const TeamSelect = ({
       updatedPicks[index] = draftPicks;
       return updatedPicks;
     });
+  };
+
+  const teamExists = (abbreviation: string) => {
+    return rostersSelected.map((roster) => {
+      return roster.some((player) => {
+        console.log(player.team, abbreviation);
+        return player.team === abbreviation;
+      });
+    })[0];
   };
   return (
     <div className={`relative  ${className}`}>
@@ -72,9 +83,15 @@ const TeamSelect = ({
         <ul className="absolute left-0 right-0 mt-1 bg-navbar border border-gray-300 shadow-lg max-h-96 overflow-y-auto">
           {Object.keys(teams).map((abbreviation: string) => (
             <li
-              key={teams[abbreviation].id}
-              className="flex items-center gap-2 px-4 py-2 hover:bg-gray-600 hover:bg-opacity-80 cursor-pointer text-white font-medium text-md"
-              onClick={() => select(abbreviation)}
+              key={abbreviation}
+              className={`flex ${
+                teamExists(abbreviation)
+                  ? "opacity-50 hover:cursor-not-allowed"
+                  : " hover:bg-gray-600 hover:bg-opacity-80 cursor-pointer"
+              } items-center gap-2 px-4 py-2  text-white font-medium text-md`}
+              onClick={
+                teamExists(abbreviation) ? () => {} : () => select(abbreviation)
+              }
             >
               {teams[abbreviation].id}.
               <img

@@ -21,6 +21,7 @@ const TradeMachine = () => {
       </div>
       <div className="px-16 py-8 bg-black flex justify-around">
         <TeamSelected
+          rostersSelected={rostersSelected}
           setDraftPicksSelected={setDraftPicksSelected}
           setRostersSelected={setRostersSelected}
           rosterSelected={
@@ -33,6 +34,7 @@ const TradeMachine = () => {
         />
         {rostersSelected.length > 0 ? (
           <TeamSelected
+            rostersSelected={rostersSelected}
             setDraftPicksSelected={setDraftPicksSelected}
             setRostersSelected={setRostersSelected}
             rosterSelected={

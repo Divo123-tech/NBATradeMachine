@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/hover-card";
 
 type Props = {
+  rostersSelected: Player[][];
   rosterSelected: Player[] | null;
   draftPicksSelected: DraftPick[] | null;
   setRostersSelected: React.Dispatch<React.SetStateAction<Player[][]>>;
@@ -27,6 +28,7 @@ type Props = {
 };
 
 const TeamSelected = ({
+  rostersSelected,
   setRostersSelected,
   setDraftPicksSelected,
   rosterSelected,
@@ -53,7 +55,6 @@ const TeamSelected = ({
         (arr) => JSON.stringify(arr) !== JSON.stringify(rosterSelected)
       );
     });
-    console.log("roster", rosterSelected);
   };
 
   const generateCapSummary = (): string => {
@@ -67,9 +68,10 @@ const TeamSelected = ({
     }
   };
   return (
-    <div className="min-w-1/4 w-1/2 max-w-[45%] border-dashed border-2 border-gray-500 px-4 py-4 min-h-96 bg-navbar flex flex-col gap-4">
+    <div className="min-w-1/4 w-1/2 max-w-[45%] border-dashed border-2 border-gray-500 px-4 py-4 min-h-96 h-fit bg-navbar flex flex-col gap-4">
       <div className="flex items-center gap-3">
         <TeamSelect
+          rostersSelected={rostersSelected}
           teams={teams}
           className="w-full border border-gray-500 px-2 py-1 text-gray-400 font-semibold bg-navbar rounded-sm text-lg"
           setRostersSelected={setRostersSelected}
