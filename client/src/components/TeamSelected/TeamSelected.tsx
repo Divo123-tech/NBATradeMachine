@@ -49,10 +49,12 @@ const TeamSelected = ({
 
   const removeTeam = () => {
     setRostersSelected((prevRosters: Player[][]) => {
+      //filters the new rosters to not include the current roster being removed
       return prevRosters.filter(
         (arr) => JSON.stringify(arr) !== JSON.stringify(rosterSelected)
       );
     });
+    //simply remove the team from the index prop given
     setTeamsInTrade((prevTeams: string[]) => {
       prevTeams.splice(index);
       return prevTeams;
