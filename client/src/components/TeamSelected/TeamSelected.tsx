@@ -73,7 +73,7 @@ const TeamSelected = ({
     }
   };
   return (
-    <div className="w-full md:w-[80%] flex-1 basis-0 lg:min-w-[25%] lg:w-[30%]  lg:max-w-[45%] border-dashed border-2 border-gray-500 px-4 py-4 min-h-96 h-fit bg-navbar flex flex-col gap-4">
+    <div className="w-full md:w-[80%] lg:flex-1 lg:basis-0 lg:min-w-[30%] lg:w-[30%]  lg:max-w-[45%] border-dashed border-2 border-gray-500 px-4 py-4 min-h-96 h-fit bg-navbar flex flex-col gap-4">
       <div className="flex items-center gap-3">
         <TeamSelect
           teamsInTrade={teamsInTrade}
@@ -179,7 +179,7 @@ const TeamSelected = ({
         </div>
       )}
       {!teamSelected && (
-        <div className="text-center py-8">
+        <div className="text-center flex justify-center py-8 w-full ">
           <p className="text-gray-400 text-2xl">Add a Team</p>
         </div>
       )}
