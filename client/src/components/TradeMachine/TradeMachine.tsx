@@ -33,8 +33,9 @@ const TradeMachine = () => {
         </h1>
         {rostersSelected.length > 1 && (
           <button
-            className="bg-orange-500 h-fit text-white px-3 py-2 rounded-md font-bold"
+            className="bg-orange-500 h-fit text-white px-3 py-2 rounded-md font-bold disabled:opacity-40 disabled:cursor-not-allowed"
             onClick={addNullTeam}
+            disabled={rostersSelected.some((roster) => roster == null)}
           >
             + Add Team
           </button>
