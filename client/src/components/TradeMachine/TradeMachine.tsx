@@ -35,7 +35,10 @@ const TradeMachine = () => {
           <button
             className="bg-orange-500 h-fit text-white px-3 py-2 rounded-md font-bold disabled:opacity-40 disabled:cursor-not-allowed"
             onClick={addNullTeam}
-            disabled={rostersSelected.some((roster) => roster == null)}
+            disabled={
+              rostersSelected.some((roster) => roster == null) ||
+              rostersSelected.length == 5
+            }
           >
             + Add Team
           </button>
@@ -68,7 +71,7 @@ const TradeMachine = () => {
         ) : (
           <Instructions />
         )}
-        {rostersSelected.length > 2 && (
+        {/* {rostersSelected.length > 2 && (
           <TeamSelected
             teamsInTrade={teamsInTrade}
             setTeamsInTrade={setTeamsInTrade}
@@ -80,7 +83,29 @@ const TradeMachine = () => {
             }
             index={2}
           />
-        )}
+        )} */}
+        {[2, 3, 4].map((num: number) => {
+          return (
+            <>
+              {rostersSelected.length > num && (
+                <TeamSelected
+                  teamsInTrade={teamsInTrade}
+                  key={num}
+                  setTeamsInTrade={setTeamsInTrade}
+                  setDraftPicksSelected={setDraftPicksSelected}
+                  setRostersSelected={setRostersSelected}
+                  rosterSelected={rostersSelected[num]}
+                  draftPicksSelected={
+                    draftPicksSelected.length > num
+                      ? draftPicksSelected[num]
+                      : null
+                  }
+                  index={num}
+                />
+              )}
+            </>
+          );
+        })}
       </div>
     </>
   );
