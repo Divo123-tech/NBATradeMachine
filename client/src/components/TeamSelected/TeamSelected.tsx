@@ -73,7 +73,7 @@ const TeamSelected = ({
     }
   };
   return (
-    <div className="w-full md:w-[80%] lg:w-[45%] border-dashed border-2 border-gray-500 px-4 py-4 min-h-96 h-fit bg-navbar flex flex-col gap-4">
+    <div className="w-full md:w-[80%] flex-1 basis-0 lg:min-w-[25%] lg:w-[30%]  lg:max-w-[45%] border-dashed border-2 border-gray-500 px-4 py-4 min-h-96 h-fit bg-navbar flex flex-col gap-4">
       <div className="flex items-center gap-3">
         <TeamSelect
           teamsInTrade={teamsInTrade}
@@ -158,7 +158,7 @@ const TeamSelected = ({
       )}
       {/* generate players if the view is player */}
       {rosterSelected && view == "player" && (
-        <div>
+        <div className="max-h-[500px] overflow-y-auto">
           {rosterSelected.map((player: Player) => {
             return <PlayerTrade player={player} key={player.name} />;
           })}
