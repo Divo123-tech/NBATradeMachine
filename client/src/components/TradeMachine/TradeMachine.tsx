@@ -3,9 +3,6 @@ import { DraftPick } from "../../services/draftpick.service";
 import { Player } from "../../services/players.service";
 import TeamSelected from "../TeamSelected";
 import Instructions from "../Instructions";
-export type Roster = {
-  [team: string]: Player[];
-};
 const TradeMachine = () => {
   const [rostersSelected, setRostersSelected] = useState<(Player[] | null)[]>(
     []
