@@ -71,19 +71,6 @@ const TradeMachine = () => {
         ) : (
           <Instructions />
         )}
-        {/* {rostersSelected.length > 2 && (
-          <TeamSelected
-            teamsInTrade={teamsInTrade}
-            setTeamsInTrade={setTeamsInTrade}
-            setDraftPicksSelected={setDraftPicksSelected}
-            setRostersSelected={setRostersSelected}
-            rosterSelected={rostersSelected[2]}
-            draftPicksSelected={
-              draftPicksSelected.length > 1 ? draftPicksSelected[1] : null
-            }
-            index={2}
-          />
-        )} */}
         {[2, 3, 4].map((num: number) => {
           return (
             <>
