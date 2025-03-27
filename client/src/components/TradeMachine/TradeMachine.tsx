@@ -29,6 +29,7 @@ const TradeMachine = () => {
         <h1 className="text-white font-semibold text-3xl py-6 px-16 ">
           NBA Trade Machine
         </h1>
+        {/* adds an add team button for if there's more than one team */}
         {rostersSelected.length > 1 && (
           <button
             className="bg-orange-500 h-fit text-white px-3 py-2 rounded-md font-bold disabled:opacity-40 disabled:cursor-not-allowed"
