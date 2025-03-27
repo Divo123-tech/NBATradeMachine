@@ -13,6 +13,7 @@ const TradeMachine = () => {
   //state to keep track of the teams in the trade to prevent duplicates
   const [teamsInTrade, setTeamsInTrade] = useState<string[]>([]);
   const addNullTeam = () => {
+    //only add teams if there are less than 5 teams
     if (rostersSelected.length < 5) {
       setRostersSelected((prevRosters: (Player[] | null)[]) => {
         return [...prevRosters, null];
